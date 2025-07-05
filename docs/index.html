@@ -1,88 +1,4 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bass Boost App with 32-Band EQ</title>
-  <style>
-    body { font-family: sans-serif; max-width: 700px; margin: 2em auto; }
-    #result { margin-top: 1em; }
-    label, input, button, select { display: block; margin: 0.5em 0; }
-    .eq-band { display: flex; gap: 1em; align-items: center; }
-    .eq-band input[type="number"] { width: 70px; }
-    .eq-band label { margin: 0; }
-    .eq-container { max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 1em; }
-  </style>
-</head>
-<body>
-  <h1>Bass Boost Your Audio! (with 32-Band EQ)</h1>
-  <form id="uploadForm" enctype="multipart/form-data">
-    <label for="audioInput">Choose an audio file:</label>
-    <input type="file" id="audioInput" name="audio" accept="audio/*" required>
-
-    <label for="bassLevel">Bass Boost Level: <span id="bassValue">10</span>dB</label>
-    <input type="range" id="bassLevel" name="bassLevel" min="0" max="30" value="10">
-
-    <label>
-      <input type="checkbox" name="extraBass" id="extraBass">
-    t 
-
-    <label for="speed">Speed: <span id="speedValue">1.0</span>x</label>
-    <input type="range" id="speed" name="speed" min="0.5" max="2" step="0.1" value="1">
-
-    <label for="gain">Gain (dB): <span id="gainValue">0</span></label>
-    <input type="range" id="gain" name="gain" min="-20" max="20" value="0">
-
-    <label for="masterGain">Master Gain (dB): <span id="masterGainValue">0</span></label>
-    <input type="range" id="masterGain" name="masterGain" min="-20" max="20" value="0">
-
-    <label for="q">Q (Bandwidth): <span id="qValue">1.0</span></label>
-    <input type="range" id="q" name="q" min="0.1" max="10" step="0.1" value="1.0">
-
-    <div class="eq-container">
-      <h3>32-Band EQ</h3>
-      <div id="eqBands"></div>
-    </div>
-
-    <button type="submit">Process Audio</button>
-  </form>
-  <div id="result"></div>
-  <script>
-    // Update label values
-    document.getElementById('bassLevel').oninput = function() {
-      document.getElementById('bassValue').textContent = this.value;
-    };
-    document.getElementById('speed').oninput = function() {
-      document.getElementById('speedValue').textContent = this.value;
-    };
-    document.getElementById('gain').oninput = function() {
-      document.getElementById('gainValue').textContent = this.value;
-    };
-    document.getElementById('masterGain').oninput = function() {
-      document.getElementById('masterGainValue').textContent = this.value;
-    };
-    document.getElementById('q').oninput = function() {
-      document.getElementById('qValue').textContent = this.value;
-    };
-
-    // Generate 32-band EQ controls
-    const eqFrequencies = [
-      20, 25, 31, 40, 50, 63, 80, 100, 125, 160, 200, 250, 315, 400, 500, 630,
-      800, 1000, 1250, 1600, 2000, 2500, 3150, 4000, 5000, 6300, 8000, 10000, 12500, 16000, 20000, 22000
-    ];
-    const eqBandsDiv = document.getElementById('eqBands');
-    for (let i = 0; i < 32; i++) {
-      const bandDiv = document.createElement('div');
-      bandDiv.className = 'eq-band';
-      bandDiv.innerHTML = `
-        <label>Band ${i+1} Freq: <input type="number" name="eqFreq${i+1}" value="${eqFrequencies[i]}" min="20" max="22000"></label>
-        <label>Gain: <input type="number" name="eqGain${i+1}" value="0" min="-20" max="20"></label>
-      `;
-      eqBandsDiv.appendChild(bandDiv);
-    }
-
-    document.getElementById('uploadForm').onsubmit = async function(e) {
-      e.preventDefault();
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -91,37 +7,34 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #0a0a0a;
-      color: #00ffff;
+      background: black;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
     }
-    img.logo {
-      width: 300px;
-      max-width: 90%;
-      margin-bottom: 2rem;
+    img {
+      max-width: 300px;
+      margin-bottom: 30px;
     }
     h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 3em;
+      margin: 0;
     }
     p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      text-align: center;
-      line-height: 1.5;
+      font-size: 1.25em;
+      color: #ccc;
     }
   </style>
 </head>
 <body>
-  <a href="index.html">
-    <img src="logo.png" alt="ResonanceVerse Logo" class="logo"/>
-  </a>
-  <h1>Welcome to ResonanceVerse</h1>
-  <p>A unified engine of resonance, geometry, and ancient frequencies — developed to power sacred technology and future defense.</p>
+  <img src="logo.png" alt="ResonanceVerse Logo" />
+  <h1>ResonanceVerse</h1>
+  <p>Scripture. Geometry. Frequency. Innovation.</p>
 </body>
 </html>
 
