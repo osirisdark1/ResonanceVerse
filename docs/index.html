@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -25,21 +24,7 @@
 
     <label>
       <input type="checkbox" name="extraBass" id="extraBass">
-      Extra Bass Boost
-    </label>
-
-    <label for="bassFreq">Bass Frequency:</label>
-    <select id="bassFreq" name="bassFreq">
-      <option value="60">60 Hz</option>
-      <option value="80">80 Hz</option>
-      <option value="100" selected>100 Hz</option>
-      <option value="120">120 Hz</option>
-      <option value="150">150 Hz</option>
-      <option value="200">200 Hz</option>
-    </select>
-
-    <label><input type="checkbox" name="treble" id="treble"> Treble Boost</label>
-    <label><input type="checkbox" name="echo" id="echo"> Echo</label>
+    t 
 
     <label for="speed">Speed: <span id="speedValue">1.0</span>x</label>
     <input type="range" id="speed" name="speed" min="0.5" max="2" step="0.1" value="1">
@@ -97,34 +82,46 @@
 
     document.getElementById('uploadForm').onsubmit = async function(e) {
       e.preventDefault();
-      const formData = new FormData(this);
-      // Ensure all slider values are sent
-      formData.set('bassLevel', document.getElementById('bassLevel').value);
-      formData.set('speed', document.getElementById('speed').value);
-      formData.set('gain', document.getElementById('gain').value);
-      formData.set('masterGain', document.getElementById('masterGain').value);
-      formData.set('q', document.getElementById('q').value);
-      formData.set('treble', document.getElementById('treble').checked ? 'on' : '');
-      formData.set('echo', document.getElementById('echo').checked ? 'on' : '');
-      formData.set('extraBass', document.getElementById('extraBass').checked ? 'on' : '');
-      formData.set('bassFreq', document.getElementById('bassFreq').value);
-      document.getElementById('result').textContent = 'Processing...';
-      const res = await fetch('/bassboost', {
-        method: 'POST',
-        body: formData
-      });
-      if (res.ok) {
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        document.getElementById('result').innerHTML = `
-          <audio controls src="${url}"></audio><br>
-          <a href="${url}" download="processed.mp3">Download Processed File</a>
-        `;
-      } else {
-        document.getElementById('result').textContent = 'Error processing file.';
-      }
-    };
-  </script>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ResonanceVerse</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #0a0a0a;
+      color: #00ffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    img.logo {
+      width: 300px;
+      max-width: 90%;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      text-align: center;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html">
+    <img src="logo.png" alt="ResonanceVerse Logo" class="logo"/>
+  </a>
+  <h1>Welcome to ResonanceVerse</h1>
+  <p>A unified engine of resonance, geometry, and ancient frequencies — developed to power sacred technology and future defense.</p>
 </body>
 </html>
 
